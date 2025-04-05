@@ -11,7 +11,6 @@ public class GravadorPedidosRestaurante {
 
     public GravadorPedidosRestaurante (){
         this.arquivoRestaurante= "pedidos.txt";
-
     }
 
     public Collection<Pedido> recuperaPedidos() throws IOException {
