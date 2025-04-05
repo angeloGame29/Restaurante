@@ -1,10 +1,12 @@
 package br.ufpb.dcx.restaurante;
 
+import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
-public class Pedido{
-
+public class Pedido implements Serializable {
+    private static final long serialVersionUID = 1L;
     private String nomeCliente;
     private String codPedido;
     private String numMesa;
@@ -13,6 +15,7 @@ public class Pedido{
     private String statusPedido;
 
     //aceito, preparando, entregando, entregue ou cancelado
+    //TODO IMPLEMENTAR : FAZER UM ENUM
     public static final String STATUS_ACEITO = "aceito";
     public static final String STATUS_PREPARANDO = "preparando";
     public static final String STATUS_ENTREGANDO = "entregando";
@@ -79,6 +82,10 @@ public class Pedido{
             total += item.getPreco();
         }
         return total;
+    }
+
+    public void cadastrar(Map<String, Pedido> pedidoMap){
+        pedidoMap.put(this.getCodPedido(), this);
     }
 
     @Override

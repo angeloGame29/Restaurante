@@ -5,18 +5,8 @@ import br.ufpb.dcx.restaurante.classDeException.PedidoInexistenteException;
 import java.io.IOException;
 import java.util.List;
 public interface SistemaRestaurante {
-    /**
-     * Cadastra um pedido com seus dados
-     * @param nomeCLiente recebe o nome do cliente
-     * @param codigo recebe um codigo
-     * @param numMesa recebe o num da mesa em que o cliente está
-     * @param itens recebe os itens lanche/bebida
-     * @param dataPedido recebe o data que foi feito o pedido
-     * @param statusPedido recebe o status em que se encontra aquele pedido
-     * @throws PedidoExistenteException
-     */
-    void cadastrarPedido( String codigo, String nomeCLiente, String numMesa,List<ItemPedido> itens, SistemaData dataPedido, String statusPedido)
-    throws PedidoExistenteException;
+
+    void cadastrarPedido(Pedido pedido) throws PedidoExistenteException;
 
     /**
      * Confere se um pedido existe ou não
@@ -39,7 +29,7 @@ public interface SistemaRestaurante {
      * @return Pedido ele irá retornar os dados do pedido do cliente
      * @throws PedidoInexistenteException
      */
-    Pedido PesquisaPedidoPorCodigo(String codigo)
+    Pedido pesquisaPedidoPorCodigo(String codigo)
             throws PedidoInexistenteException;
 
     /**
@@ -69,6 +59,7 @@ public interface SistemaRestaurante {
 
     /**
      * Calcula o valor total do pedido de um determinado cliente.
+     *
      * @param codigo o codigo do cliente cujo o pedido será calculado
      * @return retornar um valor double que é o calculo da soma dos pedidos/itens
      * @throws PedidoInexistenteException

@@ -1,8 +1,11 @@
 package br.ufpb.dcx.restaurante;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class SistemaData {
+public class SistemaData implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private int dia;
     private int mes;
     private int ano;

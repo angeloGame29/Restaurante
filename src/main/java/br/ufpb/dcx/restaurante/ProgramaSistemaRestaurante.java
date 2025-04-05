@@ -87,7 +87,7 @@ public class ProgramaSistemaRestaurante {
                             String nomePedidoT = JOptionPane.showInputDialog("Digite o nome do cliente:");
                             String codigo = JOptionPane.showInputDialog("Digite o codigo do pedido:");
                             try {
-                                double total = sistema.calcularTotalPedido(nomePedidoT,codigo);
+                                double total = sistema.calcularTotalPedido(codigo);
                                 JOptionPane.showMessageDialog(null, "Valor do pedido R$: "+ total);
                             }catch (PedidoInexistenteException e){
                                 JOptionPane.showMessageDialog(null, "Desculpe, pedido inexistente.");
@@ -134,7 +134,7 @@ public class ProgramaSistemaRestaurante {
                         case "6"://Pesquisar pedido do código
                             String CodigoPedido = JOptionPane.showInputDialog("Qual o código do pedido? ");
                             try{
-                                Pedido p =sistema.PesquisaPedidoPorCodigo(CodigoPedido);
+                                Pedido p =sistema.pesquisaPedidoPorCodigo(CodigoPedido);
                                 JOptionPane.showMessageDialog(null,"Seu pedido é: "+p.toString());
                             } catch (PedidoInexistenteException e){
                                 JOptionPane.showMessageDialog(null,"Desculpe, pedido Inexistente!");

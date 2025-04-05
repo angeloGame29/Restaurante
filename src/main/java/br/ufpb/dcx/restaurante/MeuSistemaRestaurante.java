@@ -8,18 +8,19 @@ import java.util.*;
 
 public class MeuSistemaRestaurante implements SistemaRestaurante {
     private Map<String, Pedido> pedidoMap;
+    private GravadorPedidosRestaurante gravadorPedido;
 
     public MeuSistemaRestaurante(){
         this.pedidoMap = new HashMap<>();
+        this.gravadorPedido = new GravadorPedidosRestaurante();
     }
 
     @Override
-    public void cadastrarPedido(String codigo, String nomeCLiente, String numMesa
-            , List<ItemPedido> itens, SistemaData dataPedido, String statusPedido) throws PedidoExistenteException {
-        if(pedidoMap.containsKey(codigo)){
-            throw new PedidoExistenteException("Já existe pedido com esse código: "+ codigo);
+    public void cadastrarPedido(Pedido pedido) throws PedidoExistenteException {
+        if(pedidoMap.containsKey(pedido.getCodPedido())){
+            throw new PedidoExistenteException("Já existe pedido com esse código: "+ pedido.getCodPedido());
         } else {
-            Pedido pedido = new Pedido(codigo, nomeCLiente, numMesa, itens, dataPedido, statusPedido);
+            pedido.cadastrar(this.pedidoMap);
         }
     }
 
@@ -41,7 +42,7 @@ public class MeuSistemaRestaurante implements SistemaRestaurante {
     }
 
     @Override
-    public Pedido PesquisaPedidoPorCodigo(String codigo) throws PedidoInexistenteException {
+    public Pedido pesquisaPedidoPorCodigo(String codigo) throws PedidoInexistenteException {
         Optional<Pedido> pedidoPesquisado = this.pedidoMap.values().stream()
                 .filter(pedido -> pedidoMap.containsKey(codigo)).findFirst();
         return pedidoPesquisado.orElseThrow(() -> new PedidoInexistenteException
@@ -84,11 +85,16 @@ public class MeuSistemaRestaurante implements SistemaRestaurante {
 
     @Override
     public void salvarPedido() throws IOException {
-
+         this.gravadorPedido.gravarPedidos(this.pedidoMap.values());
     }
 
     @Override
     public void recuperarPedido() throws IOException {
-
+        Collection<Pedido> pedidosAchados = this.gravadorPedido.recuperaPedidos();
+        for (Pedido p : pedidosAchados) {
+            if (!this.pedidoMap.containsKey(p.getCodPedido())) {
+                p.cadastrar(this.pedidoMap); // Cada veículo sabe como se cadastrar, pois usei o metodo polimorfico nas classes para cadastrar
+            }
+        }
     }
 }
