@@ -28,28 +28,27 @@ public class CarrinhoPane extends JPanel {
 
     // Adiciona o painel e o produto
     public void adicionarProduto(PainelCarrinho painel, Produto produto) {
-        itens.add(produto);          // Adiciona o produto à lista
-        this.add(painel);            // Adiciona o painel visual ao carrinho
-        atualizarCarrinho();         // Atualiza o total
-        revalidate();                // Atualiza o layout
-        repaint();                   // Redesenha o painel
+        itens.add(produto);
+        this.add(painel);// Adiciona o painel visual ao carrinho
+        atualizarCarrinho();// Atualiza o total
+        revalidate();
+        repaint();
     }
 
     // Remove o produto e o painel correspondente
     public void removerProduto(Produto produto, PainelCarrinho painel) {
-        itens.remove(produto);       // Remove da lista
-        this.remove(painel);         // Remove visualmente
-        atualizarCarrinho();         // Atualiza o total
-        revalidate();                // Atualiza layout
-        repaint();                   // Redesenha
+        itens.remove(produto);
+        this.remove(painel);
+        atualizarCarrinho();
+        revalidate();
+        repaint();
     }
 
-    // Atualiza o rótulo do total
     private void atualizarCarrinho() {
         labelTotal.setText("Total: R$ " + String.format("%.2f", calcularTotal()));
     }
 
-    // Soma todos os preços
+
     private double calcularTotal() {
         return itens.stream().mapToDouble(Produto::getPreco).sum();
     }
