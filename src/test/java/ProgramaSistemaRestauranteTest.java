@@ -17,7 +17,7 @@ public class ProgramaSistemaRestauranteTest {
         itens.add(lanche);
         itens.add(bebida);
 
-        Pedido pedido = new Pedido("Joao", "n002", "01",itens,new SistemaData(11,02,2024),"Aceito");
+        Pedido pedido = new Pedido("Joao", "n002",NumMesa.MESA_01,itens,new SistemaData(11,02,2024),StatusPedido.STATUS_ACEITO);
         try {
             sistema.cadastrarPedido(pedido);
             assertTrue(sistema.existePedidoCodigo(pedido.getCodPedido()));
@@ -36,8 +36,8 @@ public class ProgramaSistemaRestauranteTest {
         itens.add(lanche);
         itens.add(bebida);
 
-        Pedido pedido = new Pedido("Diogo", "n002", "01",itens,new SistemaData(11,02,2024),"Aceito");
-        Pedido pedido2 = new Pedido("Ruan", "n003", "01",itens,new SistemaData(11,02,2024),"Aceito");
+        Pedido pedido = new Pedido("Diogo", "n002", NumMesa.MESA_01,itens,new SistemaData(11,02,2024),StatusPedido.STATUS_ACEITO);
+        Pedido pedido2 = new Pedido("Ruan", "n003", NumMesa.MESA_01,itens,new SistemaData(11,02,2024),StatusPedido.STATUS_ACEITO);
         try {
             sistema.cadastrarPedido(pedido);
             assertTrue(1 == sistema.pesquisarPedidosDoDia(11,02,2024).size());
@@ -65,7 +65,7 @@ public class ProgramaSistemaRestauranteTest {
         itens2.add(bebida2);
 
 
-        Pedido pedido = new Pedido("Diogo", "n002", "01",itens,new SistemaData(11,02,2024),"Aceito");
+        Pedido pedido = new Pedido("Diogo", "n002", NumMesa.MESA_01,itens,new SistemaData(11,02,2024),StatusPedido.STATUS_ACEITO);
         try {
             sistema.cadastrarPedido(pedido);
             assertTrue(2 == sistema.pesquisaPedidoPorCodigo("n002").getItens().size());
@@ -88,12 +88,12 @@ public class ProgramaSistemaRestauranteTest {
         itens.add(bebida);
 
 
-        Pedido pedido = new Pedido("Diogo", "n002", "01",itens,new SistemaData(11,02,2024),"Aceito");
+        Pedido pedido = new Pedido("Diogo", "n002",NumMesa.MESA_01 ,itens,new SistemaData(11,02,2024),StatusPedido.STATUS_ACEITO);
         try {
             sistema.cadastrarPedido(pedido);
-            assertTrue(sistema.pesquisaPedidoPorCodigo("n002").getStatusPedido().equals("Aceito"));
-            sistema.atualizaStatusDoPedido("n002","Preparando");
-            assertTrue(sistema.pesquisaPedidoPorCodigo("n002").getStatusPedido().equals("Preparando"));
+            assertTrue(sistema.pesquisaPedidoPorCodigo("n002").getStatusPedido().equals(StatusPedido.STATUS_ACEITO));
+            sistema.atualizaStatusDoPedido("n002",StatusPedido.STATUS_PREPARANDO);
+            assertTrue(sistema.pesquisaPedidoPorCodigo("n002").getStatusPedido().equals(StatusPedido.STATUS_PREPARANDO));
 
         }catch (PedidoExistenteException | PedidoInexistenteException e){
             e.printStackTrace();
@@ -111,7 +111,7 @@ public class ProgramaSistemaRestauranteTest {
         itens.add(bebida);
 
 
-        Pedido pedido = new Pedido("Diogo", "n002", "01",itens,new SistemaData(11,02,2024),"Aceito");
+        Pedido pedido = new Pedido("Diogo", "n002", NumMesa.MESA_01,itens,new SistemaData(11,02,2024),StatusPedido.STATUS_ACEITO);
         try {
             sistema.cadastrarPedido(pedido);
             assertTrue(sistema.existePedidoCodigo("n002"));
@@ -141,7 +141,7 @@ public class ProgramaSistemaRestauranteTest {
         itens2.add(bebida2);
 
 
-        Pedido pedido = new Pedido("Diogo", "n002", "01",itens,new SistemaData(11,02,2024),"Aceito");
+        Pedido pedido = new Pedido("Diogo", "n002", NumMesa.MESA_01,itens,new SistemaData(11,02,2024),StatusPedido.STATUS_ACEITO);
         try {
             sistema.cadastrarPedido(pedido);
             assertTrue(19 == sistema.calcularTotalPedido("n002"));

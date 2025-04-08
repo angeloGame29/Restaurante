@@ -4,6 +4,8 @@ import br.ufpb.dcx.restaurante.classDeException.PedidoInexistenteException;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.ListIterator;
+
 public interface SistemaRestaurante {
 
     void cadastrarPedido(Pedido pedido) throws PedidoExistenteException;
@@ -47,7 +49,7 @@ public interface SistemaRestaurante {
      * @param status o novo status do pedido que será atualizado
      * @throws PedidoInexistenteException
      */
-    void atualizaStatusDoPedido(String codigo, String status) throws PedidoInexistenteException;
+    void atualizaStatusDoPedido(String codigo, StatusPedido status) throws PedidoInexistenteException;
 
     /**
      * Cancela um pedido com o seu codigo informado.
@@ -69,5 +71,9 @@ public interface SistemaRestaurante {
     void salvarPedido() throws IOException;
 
     void recuperarPedido() throws IOException;
+
+    public void cadastraCardapio (String nome, String img, double preco);
+
+    public List<Produto> cardapio();
 
 }

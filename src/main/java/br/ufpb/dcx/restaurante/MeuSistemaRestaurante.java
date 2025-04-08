@@ -9,10 +9,12 @@ import java.util.*;
 public class MeuSistemaRestaurante implements SistemaRestaurante {
     private Map<String, Pedido> pedidoMap;
     private GravadorPedidosRestaurante gravadorPedido;
+    private List<Produto> cardapio;
 
     public MeuSistemaRestaurante(){
         this.pedidoMap = new HashMap<>();
         this.gravadorPedido = new GravadorPedidosRestaurante();
+        this.cardapio = new ArrayList<>();
     }
 
     @Override
@@ -59,7 +61,7 @@ public class MeuSistemaRestaurante implements SistemaRestaurante {
     }
 
     @Override
-    public void atualizaStatusDoPedido(String codigo, String status) throws PedidoInexistenteException {
+    public void atualizaStatusDoPedido(String codigo, StatusPedido status) throws PedidoInexistenteException {
         Pedido pedido = pedidoMap.get(codigo);
         if (pedido == null) {
             throw new PedidoInexistenteException("Não existe pedido com o código: " + codigo);
@@ -93,8 +95,18 @@ public class MeuSistemaRestaurante implements SistemaRestaurante {
         Collection<Pedido> pedidosAchados = this.gravadorPedido.recuperaPedidos();
         for (Pedido p : pedidosAchados) {
             if (!this.pedidoMap.containsKey(p.getCodPedido())) {
-                p.cadastrar(this.pedidoMap); // Cada veículo sabe como se cadastrar, pois usei o metodo polimorfico nas classes para cadastrar
+                p.cadastrar(this.pedidoMap);
             }
         }
+    }
+
+    @Override
+    public void cadastraCardapio(String nome, String img, double preco) {
+        Produto p = new Produto(nome, img, preco);
+        this.cardapio.add(p);
+    }
+
+    public List<Produto> cardapio (){
+        return this.cardapio;
     }
 }

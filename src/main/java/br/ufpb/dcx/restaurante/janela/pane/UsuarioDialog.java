@@ -16,6 +16,7 @@ public class UsuarioDialog extends JDialog implements ActionListener {
         userDialog.setResizable(true);
         userDialog.getContentPane().setBackground(Color.decode("#4b4452"));
         userDialog.setVisible(true);
+        userDialog.setLayout(new BorderLayout());
         //TODO IMPLEMENTAR
     }
 }

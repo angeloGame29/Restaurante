@@ -11,33 +11,72 @@ public class MenuSlide extends JPanel {
         setBackground(Color.decode("#4b4452"));
 
         bnt1 = new JButton("Gerenciamento");
-
         // Subpainel com botões ocultos
-        JPanel painelSubMenu = new JPanel();
-        painelSubMenu.setBackground(Color.decode("#4b4452"));
-        painelSubMenu.setLayout(new BoxLayout(painelSubMenu, BoxLayout.Y_AXIS));
-        painelSubMenu.setVisible(false); // começa escondido
+        JPanel painelSubMenuGeren = new JPanel();
+        painelSubMenuGeren.setBackground(Color.decode("#4b4452"));
+        painelSubMenuGeren.setFont(new Font("SansSerif", Font.CENTER_BASELINE, 20));
+        painelSubMenuGeren.setLayout(new BoxLayout(painelSubMenuGeren, BoxLayout.Y_AXIS));
+        painelSubMenuGeren.setVisible(false); // começa escondido
 
         // Subitens
-        JButton btnFuncionarios = new JButton(">Cadastrar Pedido");
-        btnFuncionarios.setBackground(null);
-        btnFuncionarios.setBorder(null);
-        btnFuncionarios.setFocusable(false);
-        btnFuncionarios.setForeground(Color.lightGray);
+        JButton subMenuCadastrar = new JButton("> Cadastrar Pedido");
+        subMenuCadastrar.setBackground(null);
+        subMenuCadastrar.setBorder(null);
+        subMenuCadastrar.setFocusable(false);
+        subMenuCadastrar.setForeground(Color.lightGray);
+        subMenuCadastrar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
-        btnFuncionarios.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        JButton btnProdutos = new JButton(">Salvar Pedidos");
-        btnProdutos.setBackground(null);
-        btnProdutos.setBorder(null);
-        btnProdutos.setFocusable(false);
-        btnProdutos.setForeground(Color.lightGray);
-        btnProdutos.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        JButton subMenuSalvar = new JButton("> Salvar Pedidos");
+        subMenuSalvar.setBackground(null);
+        subMenuSalvar.setBorder(null);
+        subMenuSalvar.setFocusable(false);
+        subMenuSalvar.setForeground(Color.lightGray);
+        subMenuSalvar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
-        painelSubMenu.add(btnFuncionarios);
-        painelSubMenu.add(btnProdutos);
+        JButton subMenuCancelar = new JButton("> Cancelar");
+        subMenuCancelar.setBackground(null);
+        subMenuCancelar.setBorder(null);
+        subMenuCancelar.setFocusable(false);
+        subMenuCancelar.setForeground(Color.lightGray);
+        subMenuCancelar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
+        painelSubMenuGeren.add(subMenuCadastrar);
+        painelSubMenuGeren.add(subMenuSalvar);
+        painelSubMenuGeren.add(subMenuCancelar);
 
         bnt2 = new JButton("Sistema");
-        //TODO IMPLEMENTAR : Subpainel com botões ocultos
+        JPanel painelSubMenuSistema = new JPanel();
+        painelSubMenuSistema.setBackground(Color.decode("#4b4452"));
+        painelSubMenuSistema.setFont(new Font("SansSerif", Font.CENTER_BASELINE, 20));
+        painelSubMenuSistema.setLayout(new BoxLayout(painelSubMenuSistema, BoxLayout.Y_AXIS));
+        painelSubMenuSistema.setVisible(false);
+
+        JButton subMenuCalcular = new JButton("> Calcular Pedidos");
+        subMenuCalcular.setBackground(null);
+        subMenuCalcular.setBorder(null);
+        subMenuCalcular.setFocusable(false);
+        subMenuCalcular.setForeground(Color.lightGray);
+        subMenuCalcular.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
+        JButton subMenuExiste = new JButton("> Verificar");
+        subMenuExiste.setBackground(null);
+        subMenuExiste.setBorder(null);
+        subMenuExiste.setFocusable(false);
+        subMenuExiste.setForeground(Color.lightGray);
+        subMenuExiste.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
+        JButton subMenuAdd = new JButton("> Adicionar pedido");
+        subMenuAdd.setBackground(null);
+        subMenuAdd.setBorder(null);
+        subMenuAdd.setFocusable(false);
+        subMenuAdd.setForeground(Color.lightGray);
+        subMenuAdd.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
+
+
+        painelSubMenuSistema.add(subMenuCalcular);
+        painelSubMenuSistema.add(subMenuExiste);
+        painelSubMenuSistema.add(subMenuAdd);
 
         bnt3 = new JButton("Consulta");
         //TODO IMPLEMENTAR : Subpainel com botões ocultos
@@ -73,14 +112,20 @@ public class MenuSlide extends JPanel {
 
         // Ação de clique
         bnt1.addActionListener(e -> {
-            painelSubMenu.setVisible(!painelSubMenu.isVisible());
+            painelSubMenuGeren.setVisible(!painelSubMenuGeren.isVisible());
+            revalidate(); // atualiza layout
+            repaint();
+        });
+        bnt2.addActionListener(e -> {
+            painelSubMenuSistema.setVisible(!painelSubMenuSistema.isVisible());
             revalidate(); // atualiza layout
             repaint();
         });
 
         add(bnt1);
-        add(painelSubMenu);
+        add(painelSubMenuGeren);
         add(bnt2);
+        add(painelSubMenuSistema);
         add(bnt3);
         add(bnt4);
     }

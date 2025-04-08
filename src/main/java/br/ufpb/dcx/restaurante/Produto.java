@@ -1,5 +1,8 @@
 package br.ufpb.dcx.restaurante;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Produto {
     private String nome;
     private String imagem;

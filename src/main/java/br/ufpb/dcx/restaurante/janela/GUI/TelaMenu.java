@@ -1,6 +1,8 @@
 package br.ufpb.dcx.restaurante.janela.GUI;
 
+import br.ufpb.dcx.restaurante.MeuSistemaRestaurante;
 import br.ufpb.dcx.restaurante.Produto;
+import br.ufpb.dcx.restaurante.SistemaRestaurante;
 import br.ufpb.dcx.restaurante.janela.pane.BarraMenu;
 import br.ufpb.dcx.restaurante.janela.pane.MenuSlide;
 import br.ufpb.dcx.restaurante.janela.pane.Menufooter;
@@ -54,23 +56,27 @@ public class TelaMenu extends JFrame {
         scrollCarrinho.getVerticalScrollBar().setUnitIncrement(16);
 
         PesquisaPane pesquisaPane = new PesquisaPane();
+        SistemaRestaurante sistema = new MeuSistemaRestaurante();
+        sistema.cadastraCardapio("Pizza Margherita", "pizza.png", 25.00);
+        sistema.cadastraCardapio("Hambúrguer", "./imgs/hamburgue.jpg", 18.00);
+        List<Produto> cardapio = sistema.cardapio();
 
         // Lista de produtos
-        List<Produto> produtos = List.of(
-                new Produto("Pizza Margherita", "pizza.png", 25.00),
-                new Produto("Hambúrguer", "./imgs/hamburgue.jpg", 18.00),
-                new Produto("Suco Natural", "suco.png", 7.00),
-                new Produto("laranja","",2),
-                new Produto("pizza","", 10),
-                new Produto("suco","", 10),
-                new Produto("vinho","", 10),
-                new Produto("cerveja","", 10),
-                new Produto("pera","", 10),
-                new Produto("uva","", 10),
-                new Produto("salada","", 10)
-        );
+//        List<Produto> produtos = List.of(
+//                new Produto("Pizza Margherita", "pizza.png", 25.00),
+//                new Produto("Hambúrguer", "./imgs/hamburgue.jpg", 18.00),
+//                new Produto("Suco Natural", "suco.png", 7.00),
+//                new Produto("laranja","",2),
+//                new Produto("pizza","", 10),
+//                new Produto("suco","", 10),
+//                new Produto("vinho","", 10),
+//                new Produto("cerveja","", 10),
+//                new Produto("pera","", 10),
+//                new Produto("uva","", 10),
+//                new Produto("salada","", 10)
+//        );
 
-        for (Produto p : produtos) {
+        for (Produto p : cardapio) {
             PainelProduto painel = new PainelProduto(p, e -> {
                 // Cria painel do produto no carrinho com ação de remoção
                 PainelCarrinho painelC = new PainelCarrinho(p); // construtor sem listener

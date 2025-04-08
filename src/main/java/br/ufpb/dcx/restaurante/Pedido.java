@@ -1,5 +1,7 @@
 package br.ufpb.dcx.restaurante;
 
+import jdk.jshell.Snippet;
+
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
@@ -9,20 +11,12 @@ public class Pedido implements Serializable {
     private static final long serialVersionUID = 1L;
     private String nomeCliente;
     private String codPedido;
-    private String numMesa;
+    private NumMesa numMesa;
     private List<ItemPedido> itens;
     private SistemaData dataPedido;
-    private String statusPedido;
+    private StatusPedido statusPedido;
 
-    //aceito, preparando, entregando, entregue ou cancelado
-    //TODO IMPLEMENTAR : FAZER UM ENUM
-    public static final String STATUS_ACEITO = "aceito";
-    public static final String STATUS_PREPARANDO = "preparando";
-    public static final String STATUS_ENTREGANDO = "entregando";
-    public static final String STATUS_ENTREGUE = "entregue";
-    public static final String STATUS_CANCELADO = "cancelado";
-
-    public Pedido(String nomeCliente, String codPedido, String numMesa, List<ItemPedido> itens, SistemaData dataPedido, String statusPedido) {
+    public Pedido(String nomeCliente, String codPedido, NumMesa numMesa, List<ItemPedido> itens, SistemaData dataPedido, StatusPedido statusPedido) {
 
         this.nomeCliente = nomeCliente;
         this.codPedido = codPedido;
@@ -36,7 +30,7 @@ public class Pedido implements Serializable {
         return this.itens;
     }
 
-    public String getNumMesa() {
+    public NumMesa getNumMesa() {
         return numMesa;
     }
 
@@ -51,7 +45,8 @@ public class Pedido implements Serializable {
     public SistemaData getDataPedido() {
         return dataPedido;
     }
-    public String getStatusPedido(){
+
+    public StatusPedido getStatusPedido(){
         return statusPedido;
     }
 
@@ -59,7 +54,7 @@ public class Pedido implements Serializable {
         this.dataPedido = dataPedido;
     }
 
-    public void setNumMesa(String numMesa){
+    public void setNumMesa(NumMesa numMesa){
         this.numMesa = numMesa;
     }
 
@@ -68,9 +63,11 @@ public class Pedido implements Serializable {
                 this.codPedido+", da mesa número:"+this.numMesa+", com itens:"+
                 this.itens+", na data de:"+this.dataPedido+"STATUS:"+this.statusPedido;
     }
-    public void setStatusPedido(String statusPedido){
+
+    public void setStatusPedido(StatusPedido statusPedido){
         this.statusPedido = statusPedido;
     }
+
     public void setItens(List<ItemPedido> itens){
         this.itens= itens;
 
