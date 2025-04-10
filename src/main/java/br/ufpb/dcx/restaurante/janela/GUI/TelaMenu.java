@@ -3,6 +3,7 @@ package br.ufpb.dcx.restaurante.janela.GUI;
 import br.ufpb.dcx.restaurante.MeuSistemaRestaurante;
 import br.ufpb.dcx.restaurante.Produto;
 import br.ufpb.dcx.restaurante.SistemaRestaurante;
+import br.ufpb.dcx.restaurante.janela.controller.PedidoController;
 import br.ufpb.dcx.restaurante.janela.pane.BarraMenu;
 import br.ufpb.dcx.restaurante.janela.pane.MenuSlide;
 import br.ufpb.dcx.restaurante.janela.pane.Menufooter;
@@ -10,6 +11,7 @@ import br.ufpb.dcx.restaurante.janela.pane.footPanes.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TelaMenu extends JFrame {
@@ -58,7 +60,7 @@ public class TelaMenu extends JFrame {
         PesquisaPane pesquisaPane = new PesquisaPane();
         SistemaRestaurante sistema = new MeuSistemaRestaurante();
         sistema.cadastraCardapio("Pizza Margherita", "pizza.png", 25.00);
-        sistema.cadastraCardapio("Hambúrguer", "./imgs/hamburgue.jpg", 18.00);
+        sistema.cadastraCardapio("Hambúrguer", "./imgs/cardapio/hamburgue.jpg", 18.00);
         List<Produto> cardapio = sistema.cardapio();
 
         // Lista de produtos
@@ -79,9 +81,14 @@ public class TelaMenu extends JFrame {
         for (Produto p : cardapio) {
             PainelProduto painel = new PainelProduto(p, e -> {
                 // Cria painel do produto no carrinho com ação de remoção
-                PainelCarrinho painelC = new PainelCarrinho(p); // construtor sem listener
-                painelC.adicionarRemoverListener(ev -> carrinhoPane.removerProduto(p, painelC));
+                PainelCarrinho painelC = new PainelCarrinho(p);
+                painelC.adicionarRemoverListener(ev -> {
+                    carrinhoPane.removerProduto(p, painelC);
+                    PedidoController.removerProdutoDoPedido(p);
+                });
                 carrinhoPane.adicionarProduto(painelC, p);
+
+                PedidoController.adicionarProdutoAoPedido(p);
             });
 
             homePane.adicionarProduto(painel);

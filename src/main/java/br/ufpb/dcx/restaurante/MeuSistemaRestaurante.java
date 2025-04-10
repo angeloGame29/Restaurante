@@ -52,7 +52,7 @@ public class MeuSistemaRestaurante implements SistemaRestaurante {
     }
 
     @Override
-    public void adicionarAoPedido(String codigo, List<ItemPedido> novoItemPedido) throws PedidoInexistenteException {
+    public void adicionarAoPedido(String codigo, List<Produto> novoItemPedido) throws PedidoInexistenteException {
         if(this.pedidoMap.containsKey(codigo)){
             pedidoMap.get(codigo).getItens().addAll(novoItemPedido);
         } else {

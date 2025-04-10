@@ -32,6 +32,16 @@ public class SistemaData implements Serializable {
         return this.dia + "/" + this.mes + "/" + this.ano;
     }
 
+    public static SistemaData converteEmSistemaData (String data){
+        String[] partes = data.split("/");
+
+        int dia = Integer.parseInt(partes[0]);
+        int mes = Integer.parseInt(partes[1]);
+        int ano = Integer.parseInt(partes[2]);
+
+        return new SistemaData(dia, mes, ano);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

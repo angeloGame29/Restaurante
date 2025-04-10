@@ -19,7 +19,7 @@ public class MenuSlide extends JPanel {
         painelSubMenuGeren.setVisible(false); // começa escondido
 
         // Subitens
-        JButton subMenuCadastrar = new JButton("> Cadastrar Pedido");
+        JButton subMenuCadastrar = new JButton("> Inserir ao cardapio");
         subMenuCadastrar.setBackground(null);
         subMenuCadastrar.setBorder(null);
         subMenuCadastrar.setFocusable(false);
@@ -33,7 +33,7 @@ public class MenuSlide extends JPanel {
         subMenuSalvar.setForeground(Color.lightGray);
         subMenuSalvar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
-        JButton subMenuCancelar = new JButton("> Cancelar");
+        JButton subMenuCancelar = new JButton("> Cancelar Pedido");
         subMenuCancelar.setBackground(null);
         subMenuCancelar.setBorder(null);
         subMenuCancelar.setFocusable(false);

@@ -12,11 +12,11 @@ public class Pedido implements Serializable {
     private String nomeCliente;
     private String codPedido;
     private NumMesa numMesa;
-    private List<ItemPedido> itens;
+    private List<Produto> itens;
     private SistemaData dataPedido;
     private StatusPedido statusPedido;
 
-    public Pedido(String nomeCliente, String codPedido, NumMesa numMesa, List<ItemPedido> itens, SistemaData dataPedido, StatusPedido statusPedido) {
+    public Pedido(String nomeCliente, String codPedido, NumMesa numMesa, List<Produto> itens, SistemaData dataPedido, StatusPedido statusPedido) {
 
         this.nomeCliente = nomeCliente;
         this.codPedido = codPedido;
@@ -26,7 +26,7 @@ public class Pedido implements Serializable {
         this.statusPedido = statusPedido;
     }
 
-    public List<ItemPedido> getItens() {
+    public List<Produto> getItens() {
         return this.itens;
     }
 
@@ -68,14 +68,14 @@ public class Pedido implements Serializable {
         this.statusPedido = statusPedido;
     }
 
-    public void setItens(List<ItemPedido> itens){
+    public void setItens(List<Produto> itens){
         this.itens= itens;
 
     }
 
     public double calcularTotal() {
         double total = 0;
-        for (ItemPedido item : itens) {
+        for (Produto item : itens) {
             total += item.getPreco();
         }
         return total;

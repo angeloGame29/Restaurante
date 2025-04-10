@@ -1,12 +1,12 @@
 package br.ufpb.dcx.restaurante.janela.pane;
 
+import br.ufpb.dcx.restaurante.janela.controller.UsuarioController;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import static br.ufpb.dcx.restaurante.janela.pane.ModImagem.deixaTamanhoIcon;
 import static br.ufpb.dcx.restaurante.janela.pane.ModImagem.deixaTamanhoIcon;
 
 public class BarraMenu extends JPanel {
@@ -14,9 +14,9 @@ public class BarraMenu extends JPanel {
     private JButton bntMenu, bntUser;
 
     JLabel titulo;
-    ImageIcon logo = new ImageIcon("./imgs/logoRes.png");
-    ImageIcon user = new ImageIcon("./imgs/user.png");
-    ImageIcon menu = new ImageIcon("./imgs/menu.png");
+    ImageIcon logo = new ImageIcon("./imgs/icones/logoRes.png");
+    ImageIcon user = new ImageIcon("./imgs/icones/user.png");
+    ImageIcon menu = new ImageIcon("./imgs/icones/menu.png");
     public BarraMenu (MenuSlide menuSlide){
         this.menuSlide = menuSlide;
 
@@ -67,7 +67,7 @@ public class BarraMenu extends JPanel {
                 repaint();
             }
         });
-        bntUser.addActionListener(new UsuarioDialog() {
+        bntUser.addActionListener(new UsuarioController() {
         });
 
         menuInformacoes.add(bntUser,BorderLayout.EAST);
