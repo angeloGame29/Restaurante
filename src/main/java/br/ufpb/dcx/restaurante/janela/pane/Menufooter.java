@@ -114,6 +114,11 @@ public class Menufooter extends JPanel {
         bttCategoria.addActionListener(animarNoClick);
         bttHome.addActionListener(animarNoClick);
 
+        bttHome.setToolTipText("HOME");
+        bttCategoria.setToolTipText("CATEGORIA");
+        bttLogo.setToolTipText("LOGO");
+        bttCarrinho.setToolTipText("CARRINHO");
+        bttPesquisa.setToolTipText("PESQUISA");
 
         add(bttHome);
         add(bttCategoria);

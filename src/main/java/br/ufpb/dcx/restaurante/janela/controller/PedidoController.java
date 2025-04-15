@@ -9,8 +9,7 @@ import br.ufpb.dcx.restaurante.janela.pane.footPanes.PainelCarrinho;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +18,7 @@ public class PedidoController extends JDialog implements ActionListener {
     SistemaRestaurante sistema = new MeuSistemaRestaurante();
 
     public void actionPerformed(ActionEvent e) {
-        JDialog pedidoDialog = new JDialog(this, "",true);
+        JDialog pedidoDialog = new JDialog(this, "", true);
         pedidoDialog.setTitle("Finalizar Pedido");
         pedidoDialog.setSize(600, 550);
         pedidoDialog.setLocationRelativeTo(null);
@@ -29,7 +28,7 @@ public class PedidoController extends JDialog implements ActionListener {
 
         JPanel header = new JPanel();
         JLabel titulo;
-        header.setPreferredSize(new Dimension(0,50));
+        header.setPreferredSize(new Dimension(0, 50));
         header.setLayout(new BorderLayout());
         header.setBackground(Color.decode("#9b9b9b"));
 
@@ -40,16 +39,14 @@ public class PedidoController extends JDialog implements ActionListener {
 
         JPanel body = new JPanel();
         body.setLayout(new BorderLayout());
-        body.setPreferredSize(new Dimension(350,0));
+        body.setPreferredSize(new Dimension(350, 0));
         body.setBackground(Color.decode("#e9e9e9"));
 
-        JPanel tituloDoBody = new JPanel();
-
         JPanel dados = new JPanel();
-        dados.setLayout(new GridLayout(10,1, 10,10));
-        dados.setBorder(new EmptyBorder(20,20,20,20));
-        JLabel lblNome, lblCodigoPedido, lblItens, lblDataPedido;
-        JTextField txtNome,txtCodPedido, txtData;
+        dados.setLayout(new GridLayout(10, 1, 10, 10));
+        dados.setBorder(new EmptyBorder(20, 20, 20, 20));
+        JLabel lblNome, lblCodigoPedido, lblItens, lblDataPedido, lblMesa, lblStatus;
+        JTextField txtNome, txtCodPedido, txtData;
 
         lblNome = new JLabel("Nome cliente:");
         txtNome = new JTextField();
@@ -57,6 +54,7 @@ public class PedidoController extends JDialog implements ActionListener {
         lblCodigoPedido = new JLabel("Código pedido:");
         txtCodPedido = new JTextField();
 
+        lblMesa = new JLabel("Número mesa:");
         JComboBox<NumMesa> mesaBox = new JComboBox<>();
         mesaBox.addItem(NumMesa.MESA_01);
         mesaBox.addItem(NumMesa.MESA_02);
@@ -66,8 +64,32 @@ public class PedidoController extends JDialog implements ActionListener {
 
 
         lblDataPedido = new JLabel("Data do pedido:");
-        txtData = new JTextField();
+        txtData = new JTextField("Formato: DD/MM/AAAA");
+        txtData.setForeground(Color.GRAY);
 
+            txtData.addFocusListener(new FocusListener() {
+                @Override
+                public void focusGained(FocusEvent e) {
+                    if (txtData.getText().equals("Formato: DD/MM/AAAA")) {
+                        txtData.setText("");
+                        txtData.setForeground(Color.BLACK);
+                    }return;
+                }
+
+                @Override
+                public void focusLost(FocusEvent e) {
+                    if (txtData.getText().equals("")) {
+                        txtData.setText("Formato: DD/MM/AAAA");
+                        txtData.setForeground(Color.GRAY);
+                    } else if (txtData.getText().length() < 10 | txtData.getText().length() > 10) {
+                        JOptionPane.showMessageDialog(null,"Erro: Data invalida!");
+                    }
+                    return;
+                }
+            });
+
+
+        lblStatus = new JLabel("Status pedido:");
         JComboBox<StatusPedido> statusBox = new JComboBox<>();
 
         statusBox.addItem(StatusPedido.STATUS_ACEITO);
@@ -78,11 +100,13 @@ public class PedidoController extends JDialog implements ActionListener {
         dados.add(lblCodigoPedido);
         dados.add(txtCodPedido);
 
+        dados.add(lblMesa);
         dados.add(mesaBox);
 
         dados.add(lblDataPedido);
         dados.add(txtData);
 
+        dados.add(lblStatus);
         dados.add(statusBox);
 
         JPanel botoes = new JPanel();
@@ -95,7 +119,6 @@ public class PedidoController extends JDialog implements ActionListener {
         botoes.add(btFinalizar);
         botoes.add(btLimpar);
 
-        body.add(tituloDoBody, BorderLayout.NORTH);
         body.add(dados, BorderLayout.CENTER);
         body.add(botoes, BorderLayout.SOUTH);
 
@@ -104,7 +127,12 @@ public class PedidoController extends JDialog implements ActionListener {
         anside.setBorder(new EmptyBorder(20,30,20,10));
         anside.setLayout(new BorderLayout());
         anside.setBackground(Color.decode("#4b4452"));
-        lblItens = new JLabel("Itens do pedido:");
+
+        lblItens = new JLabel("Itens do pedido:", SwingConstants.CENTER);
+        lblItens.setFont(new Font("Sans-Serif", Font.BOLD,18));
+        lblItens.setForeground(Color.WHITE);
+
+
         JTextArea itens = new JTextArea();
         itens.setText("");
         System.out.println("Qtd de produtos: " + itensPedido.size());
@@ -123,18 +151,38 @@ public class PedidoController extends JDialog implements ActionListener {
             String codPedido = txtCodPedido.getText();
             NumMesa numMesa = (NumMesa) mesaBox.getSelectedItem();
             List<Produto> produtos = itensPedido;
-            SistemaData dataPedido = SistemaData.converteEmSistemaData(txtData.getText());
+            SistemaData dataPedido = null;
+            if (txtData.getText().length() < 10 | txtData.getText().length() > 10) {
+                    JOptionPane.showMessageDialog(null,"Erro: Data invalida!");
+            }else {
+                dataPedido = SistemaData.converteEmSistemaData(txtData.getText());
+            }
             StatusPedido statusPedido = (StatusPedido) statusBox.getSelectedItem();
 
-            Pedido p = new Pedido(nome,codPedido,numMesa,produtos,dataPedido,statusPedido);
+            if (nome.isEmpty() | codPedido.isEmpty() | produtos.isEmpty() | txtData.getText().equals("Formato: DD/MM/AAAA") ) {
+                JOptionPane.showMessageDialog(this, "Preencha todos os campos obrigatórios!");
+                return;
+            } else {
+                Pedido p = new Pedido(nome,codPedido,numMesa,produtos,dataPedido,statusPedido);
 
-            try {
-                sistema.cadastrarPedido(p);
-                JOptionPane.showMessageDialog(pedidoDialog,"Pedido cadastrado com sucesso!");
-            } catch (PedidoExistenteException ex) {
-                JOptionPane.showMessageDialog(pedidoDialog, "pedido já existe: " + p.getCodPedido());
+                try {
+                    sistema.cadastrarPedido(p);
+                    JOptionPane.showMessageDialog(pedidoDialog,"Pedido cadastrado com sucesso!");
+                } catch (PedidoExistenteException ex) {
+                    JOptionPane.showMessageDialog(pedidoDialog, "pedido já existe: " + p.getCodPedido());
+                }
+                dispose();
             }
-            dispose();
+        });
+        btLimpar.addActionListener(event2 -> {
+            if (txtNome.getText().equals("") && txtCodPedido.getText().equals("") && txtData.getText().equals("")){
+                JOptionPane.showMessageDialog(this, "Não existe o que limpar!");
+            }else {
+                txtNome.setText("");
+                txtCodPedido.setText("");
+                txtData.setText("Formato: DD/MM/AAAA");
+                txtData.setForeground(Color.GRAY);
+            }
         });
 
         pedidoDialog.add(header, BorderLayout.NORTH);
@@ -153,8 +201,5 @@ public class PedidoController extends JDialog implements ActionListener {
     }
     public static void removerProdutoDoPedido(Produto produto) {
         itensPedido.remove(produto);
-    }
-    public static void limparPedido() {
-        itensPedido.clear();
     }
 }

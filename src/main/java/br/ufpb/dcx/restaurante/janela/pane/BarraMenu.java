@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import static br.ufpb.dcx.restaurante.janela.pane.ModImagem.colorirIcon;
 import static br.ufpb.dcx.restaurante.janela.pane.ModImagem.deixaTamanhoIcon;
 
 public class BarraMenu extends JPanel {
