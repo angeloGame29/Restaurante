@@ -20,7 +20,7 @@ public class PedidoController extends JDialog implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         JDialog pedidoDialog = new JDialog(this, "", true);
         pedidoDialog.setTitle("Finalizar Pedido");
-        pedidoDialog.setSize(600, 550);
+        pedidoDialog.setSize(850, 700);
         pedidoDialog.setLocationRelativeTo(null);
         pedidoDialog.setResizable(true);
         pedidoDialog.getContentPane().setBackground(Color.decode("#4b4452"));
@@ -39,7 +39,7 @@ public class PedidoController extends JDialog implements ActionListener {
 
         JPanel body = new JPanel();
         body.setLayout(new BorderLayout());
-        body.setPreferredSize(new Dimension(350, 0));
+        body.setPreferredSize(new Dimension(500, 0));
         body.setBackground(Color.decode("#e9e9e9"));
 
         JPanel dados = new JPanel();
@@ -123,7 +123,7 @@ public class PedidoController extends JDialog implements ActionListener {
         body.add(botoes, BorderLayout.SOUTH);
 
         JPanel anside = new JPanel();
-        anside.setPreferredSize(new Dimension(250,0));
+        anside.setPreferredSize(new Dimension(350,0));
         anside.setBorder(new EmptyBorder(20,30,20,10));
         anside.setLayout(new BorderLayout());
         anside.setBackground(Color.decode("#4b4452"));

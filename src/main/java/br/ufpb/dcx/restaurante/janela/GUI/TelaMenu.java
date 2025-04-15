@@ -23,7 +23,7 @@ public class TelaMenu extends JFrame {
 
 
         setTitle("MENU");
-        setSize(600, 550);
+        setSize(850, 700);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
         getContentPane().setBackground(Color.decode("#ee7e4c"));
@@ -59,12 +59,15 @@ public class TelaMenu extends JFrame {
 
         PesquisaPane pesquisaPane = new PesquisaPane();
         SistemaRestaurante sistema = new MeuSistemaRestaurante();
-        sistema.cadastraCardapio("Pizza Margherita", "pizza.png", 25.00);
+        sistema.cadastraCardapio("Pizza Margherita", "./imgs/cardapio/pizza.png", 25.00);
         sistema.cadastraCardapio("Hambúrguer", "./imgs/cardapio/hamburgue.jpg", 18.00);
+        sistema.cadastraCardapio("Hambúrguer-Xbacon", "./imgs/cardapio/hamburgue.jpg", 18.00);
+        sistema.cadastraCardapio("Hambúrguer-Xtudo", "./imgs/cardapio/hamburgue.jpg", 18.00);
+        sistema.cadastraCardapio("Coxinha", "./imgs/cardapio/coxinha.png", 8.00);
         List<Produto> cardapio = sistema.cardapio();
 
         // Lista de produtos
-//        List<Produto> produtos = List.of(
+//        List<Produto> cardapio = List.of(
 //                new Produto("Pizza Margherita", "pizza.png", 25.00),
 //                new Produto("Hambúrguer", "./imgs/hamburgue.jpg", 18.00),
 //                new Produto("Suco Natural", "suco.png", 7.00),

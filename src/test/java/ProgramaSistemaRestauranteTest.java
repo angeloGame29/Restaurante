@@ -11,9 +11,9 @@ public class ProgramaSistemaRestauranteTest {
     @Test
     public void testaCadastroAndExiste(){
         SistemaRestaurante sistema = new MeuSistemaRestaurante();
-        ArrayList<ItemPedido> itens = new ArrayList<>();
-        Lanche lanche = new Lanche("burgue",14);
-        Bebida bebida = new Bebida("coca-cola", 5);
+        ArrayList<Produto> itens = new ArrayList<>();
+        Produto lanche = new Produto("burgue","",14);
+        Produto bebida = new Produto("coca-cola","",5);
         itens.add(lanche);
         itens.add(bebida);
 
@@ -30,9 +30,9 @@ public class ProgramaSistemaRestauranteTest {
     @Test
     public void testpesquisarPedidosDoDia (){
         SistemaRestaurante sistema = new MeuSistemaRestaurante();
-        ArrayList<ItemPedido> itens = new ArrayList<>();
-        Lanche lanche = new Lanche("burgue",14);
-        Bebida bebida = new Bebida("coca-cola", 5);
+        ArrayList<Produto> itens = new ArrayList<>();
+        Produto lanche = new Produto("burgue","",14);
+        Produto bebida = new Produto("coca-cola","",5);
         itens.add(lanche);
         itens.add(bebida);
 
@@ -52,15 +52,15 @@ public class ProgramaSistemaRestauranteTest {
     @Test
     public void testAdicionarAoPedido(){
         SistemaRestaurante sistema = new MeuSistemaRestaurante();
-        ArrayList<ItemPedido> itens = new ArrayList<>();
-        Lanche lanche = new Lanche("burgue",14);
-        Bebida bebida = new Bebida("coca-cola", 5);
+        ArrayList<Produto> itens = new ArrayList<>();
+        Produto lanche = new Produto("burgue","",14);
+        Produto bebida = new Produto("coca-cola","",5);
         itens.add(lanche);
         itens.add(bebida);
 
-        ArrayList<ItemPedido> itens2 = new ArrayList<>();
-        Lanche lanche2 = new Lanche("pizza",35);
-        Bebida bebida2 = new Bebida("coca-cola zero", 5);
+        ArrayList<Produto> itens2 = new ArrayList<>();
+        Produto lanche2 = new Produto("pizza","",34);
+        Produto bebida2 = new Produto("Guarana","",5);
         itens2.add(lanche2);
         itens2.add(bebida2);
 
@@ -81,9 +81,9 @@ public class ProgramaSistemaRestauranteTest {
     @Test
     public void testAtualizaStatusDoPedido(){
         SistemaRestaurante sistema = new MeuSistemaRestaurante();
-        ArrayList<ItemPedido> itens = new ArrayList<>();
-        Lanche lanche = new Lanche("burgue",14);
-        Bebida bebida = new Bebida("coca-cola", 5);
+        ArrayList<Produto> itens = new ArrayList<>();
+        Produto lanche = new Produto("burgue","",14);
+        Produto bebida = new Produto("coca-cola","", 5);
         itens.add(lanche);
         itens.add(bebida);
 
@@ -104,9 +104,9 @@ public class ProgramaSistemaRestauranteTest {
     @Test
     public void testCancelarPedido(){
         SistemaRestaurante sistema = new MeuSistemaRestaurante();
-        ArrayList<ItemPedido> itens = new ArrayList<>();
-        Lanche lanche = new Lanche("burgue",14);
-        Bebida bebida = new Bebida("coca-cola", 5);
+        ArrayList<Produto> itens = new ArrayList<>();
+        Produto lanche = new Produto("burgue","",14);
+        Produto bebida = new Produto("coca-cola","",5);
         itens.add(lanche);
         itens.add(bebida);
 
@@ -128,15 +128,15 @@ public class ProgramaSistemaRestauranteTest {
     public void testCalcularTotalPedido(){
         SistemaRestaurante sistema = new MeuSistemaRestaurante();
 
-        ArrayList<ItemPedido> itens = new ArrayList<>();
-        Lanche lanche = new Lanche("burgue",14);
-        Bebida bebida = new Bebida("coca-cola", 5);
+        ArrayList<Produto> itens = new ArrayList<>();
+        Produto lanche = new Produto("burgue","",14);
+        Produto bebida = new Produto("coca-cola","",5);
         itens.add(lanche);
         itens.add(bebida);
 
-        ArrayList<ItemPedido> itens2 = new ArrayList<>();
-        Lanche lanche2 = new Lanche("pizza",35);
-        Bebida bebida2 = new Bebida("coca-cola zero", 5);
+        ArrayList<Produto> itens2 = new ArrayList<>();
+        Produto lanche2 = new Produto("pizza","",34);
+        Produto bebida2 = new Produto("Guarana","",5);
         itens2.add(lanche2);
         itens2.add(bebida2);
 
@@ -146,7 +146,7 @@ public class ProgramaSistemaRestauranteTest {
             sistema.cadastrarPedido(pedido);
             assertTrue(19 == sistema.calcularTotalPedido("n002"));
             sistema.adicionarAoPedido("n002",itens2);
-            assertEquals(59, sistema.calcularTotalPedido("n002"), 0.01);//delta é a margem de erro
+            assertEquals(58, sistema.calcularTotalPedido("n002"), 0.01);//delta é a margem de erro
 
         }catch (PedidoExistenteException | PedidoInexistenteException e){
             e.printStackTrace();
