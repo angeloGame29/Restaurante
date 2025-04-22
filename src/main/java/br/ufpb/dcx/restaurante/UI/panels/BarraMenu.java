@@ -1,14 +1,14 @@
-package br.ufpb.dcx.restaurante.janela.pane;
+package br.ufpb.dcx.restaurante.UI.panels;
 
-import br.ufpb.dcx.restaurante.janela.controller.UsuarioController;
+import br.ufpb.dcx.restaurante.UI.controller.RecuperarDadosController;
+import br.ufpb.dcx.restaurante.UI.controller.UsuarioController;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import static br.ufpb.dcx.restaurante.janela.pane.ModImagem.colorirIcon;
-import static br.ufpb.dcx.restaurante.janela.pane.ModImagem.deixaTamanhoIcon;
+import static br.ufpb.dcx.restaurante.UI.panels.ModImagem.deixaTamanhoIcon;
 
 public class BarraMenu extends JPanel {
     private MenuSlide menuSlide;

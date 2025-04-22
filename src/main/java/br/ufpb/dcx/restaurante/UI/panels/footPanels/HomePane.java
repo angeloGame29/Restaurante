@@ -1,7 +1,6 @@
-package br.ufpb.dcx.restaurante.janela.pane.footPanes;
+package br.ufpb.dcx.restaurante.UI.panels.footPanels;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 
 public class HomePane extends JPanel {

@@ -1,26 +1,25 @@
-package br.ufpb.dcx.restaurante.janela.GUI;
+package br.ufpb.dcx.restaurante.UI.GUI;
 
 import br.ufpb.dcx.restaurante.MeuSistemaRestaurante;
 import br.ufpb.dcx.restaurante.Produto;
 import br.ufpb.dcx.restaurante.SistemaRestaurante;
-import br.ufpb.dcx.restaurante.janela.controller.PedidoController;
-import br.ufpb.dcx.restaurante.janela.pane.BarraMenu;
-import br.ufpb.dcx.restaurante.janela.pane.MenuSlide;
-import br.ufpb.dcx.restaurante.janela.pane.Menufooter;
-import br.ufpb.dcx.restaurante.janela.pane.footPanes.*;
+import br.ufpb.dcx.restaurante.UI.controller.PedidoController;
+import br.ufpb.dcx.restaurante.UI.panels.BarraMenu;
+import br.ufpb.dcx.restaurante.UI.panels.MenuSlide;
+import br.ufpb.dcx.restaurante.UI.panels.Menufooter;
+import br.ufpb.dcx.restaurante.UI.panels.footPanels.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.List;
 
 public class TelaMenu extends JFrame {
 
     private CardLayout cardLayout;
     private JPanel painelCentral;
+    private SistemaRestaurante sistemaRestaurante;
 
     public TelaMenu() {
-
 
         setTitle("MENU");
         setSize(850, 700);
@@ -28,8 +27,10 @@ public class TelaMenu extends JFrame {
         setLayout(new BorderLayout());
         getContentPane().setBackground(Color.decode("#ee7e4c"));
 
+        this.sistemaRestaurante = new MeuSistemaRestaurante();
+
         // Menu lateral
-        MenuSlide menuWest = new MenuSlide();
+        MenuSlide menuWest = new MenuSlide(sistemaRestaurante);
         menuWest.setVisible(false);
         add(menuWest, BorderLayout.WEST);
 
@@ -52,7 +53,7 @@ public class TelaMenu extends JFrame {
 
         LogoPane logoPane = new LogoPane();
 
-        CarrinhoPane carrinhoPane = new CarrinhoPane();
+        CarrinhoPane carrinhoPane = new CarrinhoPane(sistemaRestaurante);
         JScrollPane scrollCarrinho = new JScrollPane(carrinhoPane);
         scrollCarrinho.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollCarrinho.getVerticalScrollBar().setUnitIncrement(16);

@@ -1,7 +1,7 @@
 package br.ufpb.dcx.restaurante;
 
-import br.ufpb.dcx.restaurante.Exceptions.PedidoExistenteException;
-import br.ufpb.dcx.restaurante.Exceptions.PedidoInexistenteException;
+import br.ufpb.dcx.restaurante.exception.PedidoExistenteException;
+import br.ufpb.dcx.restaurante.exception.PedidoInexistenteException;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -61,7 +61,7 @@ public class ProgramaSistemaRestaurante {
                                 System.out.println("Opção inválida!");
                                 return;
                         }
-                        List<ItemPedido> itensDoPedido = new ArrayList<>();
+                        List<Produto> itensDoPedido = new ArrayList<>();
                         boolean concluir = true;
                         while (concluir) {
                             String opcoesDeItens = JOptionPane.showInputDialog("Escolha uma opção:" +
@@ -69,24 +69,6 @@ public class ProgramaSistemaRestaurante {
                                     "\n2- Bebidas" +
                                     "\n3- Pronto"
                             );
-
-                            switch (opcoesDeItens) {
-                                case "1":
-                                    String nomeLanche = JOptionPane.showInputDialog("Digite o nome do lanche:");
-                                    double precolanche = Double.parseDouble(JOptionPane.showInputDialog("Digite o valor do lanche:"));
-                                    Lanche lancheNovo = new Lanche(nomeLanche, precolanche);
-                                    itensDoPedido.add(lancheNovo);
-                                    break;
-                                case "2":
-                                    String nomeBebida = JOptionPane.showInputDialog("Digite o nome da Bebida:");
-                                    double precoBebida = Double.parseDouble(JOptionPane.showInputDialog("Digite o valor da Bebida:"));
-                                    Lanche bebidaNova = new Lanche(nomeBebida, precoBebida);
-                                    itensDoPedido.add(bebidaNova);
-                                    break;
-                                case "3":
-                                    concluir = false;
-                                    break;
-                            }
                         }
                         int dia = Integer.parseInt(JOptionPane.showInputDialog("Digite o dia do pedido:"));
                         int mes = Integer.parseInt(JOptionPane.showInputDialog("Digite o mês:"));
@@ -142,8 +124,8 @@ public class ProgramaSistemaRestaurante {
                     String CodPedidoAAdicionar = JOptionPane.showInputDialog("Qual o código do pedido?");
                     String nomeItem = JOptionPane.showInputDialog("Qual o item que deseja adicionar ao pedido?");
                     double valorItem = Double.parseDouble(JOptionPane.showInputDialog("Qual o preço do pedido?"));
-                    Lanche meuNovoLanche = new Lanche(nomeItem,valorItem);
-                    List<ItemPedido> ItemAAdicionarLista= new ArrayList<>();
+                    Produto meuNovoLanche = new Produto(nomeItem,"",valorItem);
+                    List<Produto> ItemAAdicionarLista= new ArrayList<>();
                     ItemAAdicionarLista.add(meuNovoLanche);
                     try {
                         sistema.adicionarAoPedido(CodPedidoAAdicionar, ItemAAdicionarLista);

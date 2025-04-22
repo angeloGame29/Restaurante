@@ -1,10 +1,9 @@
 package br.ufpb.dcx.restaurante;
-import br.ufpb.dcx.restaurante.classDeException.PedidoExistenteException;
-import br.ufpb.dcx.restaurante.classDeException.PedidoInexistenteException;
+import br.ufpb.dcx.restaurante.exception.PedidoExistenteException;
+import br.ufpb.dcx.restaurante.exception.PedidoInexistenteException;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.ListIterator;
 
 public interface SistemaRestaurante {
 

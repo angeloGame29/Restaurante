@@ -1,10 +1,10 @@
-package br.ufpb.dcx.restaurante.janela.controller;
+package br.ufpb.dcx.restaurante.UI.controller;
 
 import br.ufpb.dcx.restaurante.*;
-import br.ufpb.dcx.restaurante.classDeException.PedidoExistenteException;
-import br.ufpb.dcx.restaurante.janela.GUI.TelaMenu;
-import br.ufpb.dcx.restaurante.janela.pane.footPanes.CarrinhoPane;
-import br.ufpb.dcx.restaurante.janela.pane.footPanes.PainelCarrinho;
+import br.ufpb.dcx.restaurante.UI.panels.footPanels.CarrinhoPane;
+import br.ufpb.dcx.restaurante.UI.panels.footPanels.CategoriaPane;
+import br.ufpb.dcx.restaurante.UI.panels.footPanels.PainelCarrinho;
+import br.ufpb.dcx.restaurante.exception.PedidoExistenteException;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -15,7 +15,13 @@ import java.util.List;
 
 public class PedidoController extends JDialog implements ActionListener {
     private static List<Produto> itensPedido = new ArrayList<>();
-    SistemaRestaurante sistema = new MeuSistemaRestaurante();
+    private SistemaRestaurante sistema;
+    private CarrinhoPane janela;
+
+    public PedidoController (SistemaRestaurante sistema, CarrinhoPane janela){
+        this.sistema = sistema;
+        this.janela = janela;
+    }
 
     public void actionPerformed(ActionEvent e) {
         JDialog pedidoDialog = new JDialog(this, "", true);

@@ -1,6 +1,11 @@
-package br.ufpb.dcx.restaurante.janela.pane;
+package br.ufpb.dcx.restaurante.UI.panels;
 
-import br.ufpb.dcx.restaurante.janela.GUI.TelaMenu;
+import br.ufpb.dcx.restaurante.MeuSistemaRestaurante;
+import br.ufpb.dcx.restaurante.SistemaRestaurante;
+import br.ufpb.dcx.restaurante.UI.controller.CalcularPedidoController;
+import br.ufpb.dcx.restaurante.UI.controller.PesquisarPedidoController;
+import br.ufpb.dcx.restaurante.UI.controller.RecuperarDadosController;
+import br.ufpb.dcx.restaurante.UI.controller.SalvarDadosController;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -8,11 +13,15 @@ import java.awt.*;
 
 public class MenuSlide extends JPanel {
     JButton bnt1, bnt2, bnt3, bnt4;
-    public MenuSlide(){
+    private SistemaRestaurante sistema;
+    public MenuSlide(SistemaRestaurante sistema){
         setPreferredSize(new Dimension(160,0));
         setBorder(new EmptyBorder(5,10,10,10));
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBackground(Color.decode("#4b4452"));
+        this.sistema = sistema;
+        RecuperarDadosController r = new RecuperarDadosController(sistema, this);
+
 
         bnt1 = new JButton("Gerenciamento");
         // Subpainel com botões ocultos
@@ -166,6 +175,9 @@ public class MenuSlide extends JPanel {
                 w.dispose();
             }
         });
+        subMenuCalcular.addActionListener(new CalcularPedidoController(sistema, this));
+        subMenuSalvar.addActionListener(new SalvarDadosController(sistema,this));
+        subMenuPcodigo.addActionListener(new PesquisarPedidoController(sistema, this));
 
         add(bnt1);
         add(painelSubMenuGeren);

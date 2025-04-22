@@ -1,7 +1,10 @@
-package br.ufpb.dcx.restaurante.janela.pane.footPanes;
+package br.ufpb.dcx.restaurante.UI.panels.footPanels;
 
+import br.ufpb.dcx.restaurante.MeuSistemaRestaurante;
 import br.ufpb.dcx.restaurante.Produto;
-import br.ufpb.dcx.restaurante.janela.controller.PedidoController;
+import br.ufpb.dcx.restaurante.SistemaRestaurante;
+import br.ufpb.dcx.restaurante.UI.controller.PedidoController;
+import br.ufpb.dcx.restaurante.UI.panels.MenuSlide;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,18 +15,20 @@ public class CarrinhoPane extends JPanel {
     private List<Produto> itens = new ArrayList<>();
     private JLabel labelTotal;
     private JButton comprar;
+    SistemaRestaurante sistema;
 
-    public CarrinhoPane() {
+
+    public CarrinhoPane(SistemaRestaurante sistema) {
         setLayout(new GridLayout(10,1)); // Painéis empilhados verticalmente
         setBackground(Color.WHITE);
-
+        this.sistema = sistema;
         labelTotal = new JLabel("Total: R$ 0.00");
         labelTotal.setFont(new Font("Arial", Font.BOLD, 16));
         labelTotal.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         comprar = new JButton("Comprar");
 
-        comprar.addActionListener(new PedidoController());
+        comprar.addActionListener(new PedidoController(sistema, this));
 
         add(labelTotal); // Exibe o total no topo do painel
         add(comprar);

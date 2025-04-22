@@ -1,4 +1,4 @@
-package br.ufpb.dcx.restaurante.janela.controller;
+package br.ufpb.dcx.restaurante.UI.controller;
 
 import javax.swing.*;
 import java.awt.*;

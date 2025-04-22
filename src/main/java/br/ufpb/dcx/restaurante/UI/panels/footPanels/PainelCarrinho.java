@@ -1,9 +1,8 @@
-package br.ufpb.dcx.restaurante.janela.pane.footPanes;
+package br.ufpb.dcx.restaurante.UI.panels.footPanels;
 
 import br.ufpb.dcx.restaurante.Produto;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
