@@ -40,7 +40,7 @@ public interface SistemaRestaurante {
      * @param novoItemPedido os novos itens que seram atualizados no pedido
      * @throws PedidoInexistenteException
      */
-    void adicionarAoPedido(String codigo, List<ItemPedido>novoItemPedido)
+    void adicionarAoPedido(String codigo, List<Produto> novoItemPedido)
             throws PedidoInexistenteException;
 
     /**

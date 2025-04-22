@@ -10,8 +10,8 @@ public class PainelProduto extends JPanel {
 
     public PainelProduto(Produto produto, ActionListener aoAdicionar) {
         setLayout(new BorderLayout(5, 5));
-        setBorder(BorderFactory.createLineBorder(Color.GRAY));
-        setBackground(Color.WHITE);
+        setBorder(BorderFactory.createLineBorder(Color.decode("#ee7e4c")));
+        setBackground(Color.decode("#d94052"));
 
         // Imagem do produto
         ImageIcon icon = new ImageIcon(produto.getImagemPath());
@@ -24,6 +24,10 @@ public class PainelProduto extends JPanel {
         // Botão de adicionar
         JButton btnAdd = new JButton("Adicionar");
         btnAdd.addActionListener(aoAdicionar);
+
+        //Estilizar
+
+        btnAdd.setBackground(Color.decode("#ead56c"));
 
         add(nomeLabel, BorderLayout.NORTH);
         add(imagemLabel, BorderLayout.CENTER);

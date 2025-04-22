@@ -23,11 +23,11 @@ public class Menufooter extends JPanel {
     private TelaMenu telaMenu;
 
 
-    ImageIcon iconeCarrinho = new ImageIcon("./imgs/carrinho.png");
-    ImageIcon iconeCategoria = new ImageIcon("./imgs/categoria.png");
-    ImageIcon iconeHome = new ImageIcon("./imgs/home.png");
-    ImageIcon iconeMenu = new ImageIcon("./imgs/logo.png");
-    ImageIcon iconePesquisar = new ImageIcon("./imgs/pesquisar.png");
+    ImageIcon iconeCarrinho = new ImageIcon("./imgs/icones/carrinho.png");
+    ImageIcon iconeCategoria = new ImageIcon("./imgs/icones/categoria.png");
+    ImageIcon iconeHome = new ImageIcon("./imgs/icones/home.png");
+    ImageIcon iconeMenu = new ImageIcon("./imgs/icones/logo.png");
+    ImageIcon iconePesquisar = new ImageIcon("./imgs/icones/pesquisar.png");
 
     JButton bttHome, bttCategoria,bttLogo, bttCarrinho, bttPesquisa;
     private static JButton botaoAtivo = null;
@@ -114,6 +114,11 @@ public class Menufooter extends JPanel {
         bttCategoria.addActionListener(animarNoClick);
         bttHome.addActionListener(animarNoClick);
 
+        bttHome.setToolTipText("HOME");
+        bttCategoria.setToolTipText("CATEGORIA");
+        bttLogo.setToolTipText("LOGO");
+        bttCarrinho.setToolTipText("CARRINHO");
+        bttPesquisa.setToolTipText("PESQUISA");
 
         add(bttHome);
         add(bttCategoria);

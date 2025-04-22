@@ -1,6 +1,7 @@
 package br.ufpb.dcx.restaurante.janela.pane.footPanes;
 
 import br.ufpb.dcx.restaurante.Produto;
+import br.ufpb.dcx.restaurante.janela.controller.PedidoController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,6 +22,8 @@ public class CarrinhoPane extends JPanel {
         labelTotal.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         comprar = new JButton("Comprar");
+
+        comprar.addActionListener(new PedidoController());
 
         add(labelTotal); // Exibe o total no topo do painel
         add(comprar);
@@ -52,4 +55,5 @@ public class CarrinhoPane extends JPanel {
     private double calcularTotal() {
         return itens.stream().mapToDouble(Produto::getPreco).sum();
     }
+
 }

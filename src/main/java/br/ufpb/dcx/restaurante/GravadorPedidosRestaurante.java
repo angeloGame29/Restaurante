@@ -28,6 +28,5 @@ public class GravadorPedidosRestaurante {
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(arquivoRestaurante))){
             out.writeObject(pedidosArrayList);
         }
-
     }
 }

@@ -3,6 +3,7 @@ package br.ufpb.dcx.restaurante.janela.pane.footPanes;
 import br.ufpb.dcx.restaurante.Produto;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionListener;
 

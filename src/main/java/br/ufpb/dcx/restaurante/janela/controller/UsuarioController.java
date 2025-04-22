@@ -1,11 +1,11 @@
-package br.ufpb.dcx.restaurante.janela.pane;
+package br.ufpb.dcx.restaurante.janela.controller;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class UsuarioDialog extends JDialog implements ActionListener {
+public class UsuarioController extends JDialog implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {

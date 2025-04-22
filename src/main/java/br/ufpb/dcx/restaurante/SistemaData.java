@@ -14,7 +14,7 @@ public class SistemaData implements Serializable {
         this.dia = dia;
         this.mes = mes;
         this.ano = ano;
-    } //… outros métodos da classe
+    }
 
     public int getDia() {
         return this.dia;
@@ -28,10 +28,6 @@ public class SistemaData implements Serializable {
         return this.ano;
     }
 
-    public String toString() {
-        return this.dia + "/" + this.mes + "/" + this.ano;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -42,6 +38,20 @@ public class SistemaData implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(dia, mes, ano);
+        return Objects.hash(Integer.valueOf(dia),Integer.valueOf(mes) ,Integer.valueOf(ano));
+    }
+
+    public String toString() {
+        return this.dia + "/" + this.mes + "/" + this.ano;
+    }
+
+    public static SistemaData converteEmSistemaData (String data){
+        String[] partes = data.split("/");
+
+        int dia = Integer.parseInt(partes[0]);
+        int mes = Integer.parseInt(partes[1]);
+        int ano = Integer.parseInt(partes[2]);
+
+        return new SistemaData(dia, mes, ano);
     }
 }

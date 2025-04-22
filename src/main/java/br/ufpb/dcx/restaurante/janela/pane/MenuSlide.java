@@ -1,12 +1,16 @@
 package br.ufpb.dcx.restaurante.janela.pane;
 
+import br.ufpb.dcx.restaurante.janela.GUI.TelaMenu;
+
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 public class MenuSlide extends JPanel {
     JButton bnt1, bnt2, bnt3, bnt4;
     public MenuSlide(){
         setPreferredSize(new Dimension(160,0));
+        setBorder(new EmptyBorder(5,10,10,10));
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBackground(Color.decode("#4b4452"));
 
@@ -19,7 +23,7 @@ public class MenuSlide extends JPanel {
         painelSubMenuGeren.setVisible(false); // começa escondido
 
         // Subitens
-        JButton subMenuCadastrar = new JButton("> Cadastrar Pedido");
+        JButton subMenuCadastrar = new JButton("> Inserir ao cardapio");
         subMenuCadastrar.setBackground(null);
         subMenuCadastrar.setBorder(null);
         subMenuCadastrar.setFocusable(false);
@@ -33,7 +37,7 @@ public class MenuSlide extends JPanel {
         subMenuSalvar.setForeground(Color.lightGray);
         subMenuSalvar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
-        JButton subMenuCancelar = new JButton("> Cancelar");
+        JButton subMenuCancelar = new JButton("> Cancelar Pedido");
         subMenuCancelar.setBackground(null);
         subMenuCancelar.setBorder(null);
         subMenuCancelar.setFocusable(false);
@@ -75,14 +79,35 @@ public class MenuSlide extends JPanel {
 
 
         painelSubMenuSistema.add(subMenuCalcular);
-        painelSubMenuSistema.add(subMenuExiste);
         painelSubMenuSistema.add(subMenuAdd);
 
         bnt3 = new JButton("Consulta");
-        //TODO IMPLEMENTAR : Subpainel com botões ocultos
+        JPanel painelSubMenuConsulta = new JPanel();
+        painelSubMenuConsulta.setBackground(Color.decode("#4b4452"));
+        painelSubMenuConsulta.setFont(new Font("SansSerif", Font.CENTER_BASELINE, 20));
+        painelSubMenuConsulta.setLayout(new BoxLayout(painelSubMenuConsulta, BoxLayout.Y_AXIS));
+        painelSubMenuConsulta.setVisible(false);
+
+        JButton subMenuPdia = new JButton("> Pesquisar pedidos do dia");
+        subMenuPdia.setBackground(null);
+        subMenuPdia.setBorder(null);
+        subMenuPdia.setFocusable(false);
+        subMenuPdia.setForeground(Color.lightGray);
+        subMenuPdia.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
+        JButton subMenuPcodigo = new JButton("> Pesquisar pelo código");
+        subMenuPcodigo.setBackground(null);
+        subMenuPcodigo.setBorder(null);
+        subMenuPcodigo.setFocusable(false);
+        subMenuPcodigo.setForeground(Color.lightGray);
+        subMenuPcodigo.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
+        painelSubMenuConsulta.add(subMenuPdia);
+        painelSubMenuConsulta.add(subMenuPcodigo);
+        painelSubMenuConsulta.add(subMenuExiste);
 
         bnt4 = new JButton("Sair");
-        //TODO IMPLEMENTAR : Subpainel com botões ocultos
+
 
 
         bnt1.setBackground(null);
@@ -117,9 +142,29 @@ public class MenuSlide extends JPanel {
             repaint();
         });
         bnt2.addActionListener(e -> {
+            if (painelSubMenuGeren.isVisible()) {
+                painelSubMenuGeren.setVisible(!painelSubMenuGeren.isVisible());
+                revalidate(); // atualiza layout
+                repaint();
+            }
             painelSubMenuSistema.setVisible(!painelSubMenuSistema.isVisible());
             revalidate(); // atualiza layout
             repaint();
+        });
+        bnt3.addActionListener(e -> {
+            if (painelSubMenuSistema.isVisible()){//se o painel sistema tiver visivel, fecha ele pra mim
+                painelSubMenuSistema.setVisible(!painelSubMenuSistema.isVisible());
+                revalidate(); // atualiza layout
+                repaint();
+            }//e abre o consulta
+            painelSubMenuConsulta.setVisible(!painelSubMenuConsulta.isVisible());
+            revalidate(); // atualiza layout
+            repaint();
+        });
+        bnt4.addActionListener(e -> {
+            for (Window w: Window.getWindows()){
+                w.dispose();
+            }
         });
 
         add(bnt1);
@@ -127,6 +172,7 @@ public class MenuSlide extends JPanel {
         add(bnt2);
         add(painelSubMenuSistema);
         add(bnt3);
+        add(painelSubMenuConsulta);
         add(bnt4);
     }
 }
