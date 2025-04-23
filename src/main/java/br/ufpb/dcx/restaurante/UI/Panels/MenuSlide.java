@@ -1,11 +1,7 @@
-package br.ufpb.dcx.restaurante.UI.panels;
+package br.ufpb.dcx.restaurante.UI.Panels;
 
-import br.ufpb.dcx.restaurante.MeuSistemaRestaurante;
 import br.ufpb.dcx.restaurante.SistemaRestaurante;
-import br.ufpb.dcx.restaurante.UI.controller.CalcularPedidoController;
-import br.ufpb.dcx.restaurante.UI.controller.PesquisarPedidoController;
-import br.ufpb.dcx.restaurante.UI.controller.RecuperarDadosController;
-import br.ufpb.dcx.restaurante.UI.controller.SalvarDadosController;
+import br.ufpb.dcx.restaurante.UI.Controller.*;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -21,7 +17,7 @@ public class MenuSlide extends JPanel {
         setBackground(Color.decode("#4b4452"));
         this.sistema = sistema;
         RecuperarDadosController r = new RecuperarDadosController(sistema, this);
-
+        new Thread(()-> r.actionPerformed(null)).start();
 
         bnt1 = new JButton("Gerenciamento");
         // Subpainel com botões ocultos
@@ -71,14 +67,14 @@ public class MenuSlide extends JPanel {
         subMenuCalcular.setForeground(Color.lightGray);
         subMenuCalcular.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
-        JButton subMenuExiste = new JButton("> Verificar");
-        subMenuExiste.setBackground(null);
-        subMenuExiste.setBorder(null);
-        subMenuExiste.setFocusable(false);
-        subMenuExiste.setForeground(Color.lightGray);
-        subMenuExiste.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        JButton subMenuTodosPedidos = new JButton("> Verificar se existe pedido");
+        subMenuTodosPedidos.setBackground(null);
+        subMenuTodosPedidos.setBorder(null);
+        subMenuTodosPedidos.setFocusable(false);
+        subMenuTodosPedidos.setForeground(Color.lightGray);
+        subMenuTodosPedidos.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
-        JButton subMenuAdd = new JButton("> Adicionar pedido");
+        JButton subMenuAdd = new JButton("> Adicionar ao pedido");
         subMenuAdd.setBackground(null);
         subMenuAdd.setBorder(null);
         subMenuAdd.setFocusable(false);
@@ -113,7 +109,7 @@ public class MenuSlide extends JPanel {
 
         painelSubMenuConsulta.add(subMenuPdia);
         painelSubMenuConsulta.add(subMenuPcodigo);
-        painelSubMenuConsulta.add(subMenuExiste);
+        painelSubMenuConsulta.add(subMenuTodosPedidos);
 
         bnt4 = new JButton("Sair");
 
@@ -177,8 +173,11 @@ public class MenuSlide extends JPanel {
         });
         subMenuCalcular.addActionListener(new CalcularPedidoController(sistema, this));
         subMenuSalvar.addActionListener(new SalvarDadosController(sistema,this));
-        subMenuPcodigo.addActionListener(new PesquisarPedidoController(sistema, this));
-
+        subMenuPcodigo.addActionListener(new PesquisarPedidoPorCodigoController(sistema, this));
+        subMenuAdd.addActionListener(new AddAoPedidoController(sistema, this));
+        subMenuTodosPedidos.addActionListener(new PedidosExistentesController(sistema, this));
+        subMenuPdia.addActionListener(new PesquisarPedidosPorDiaController(sistema,this));
+        subMenuCancelar.addActionListener(new CancelarPedidoController(sistema, this));
         add(bnt1);
         add(painelSubMenuGeren);
         add(bnt2);

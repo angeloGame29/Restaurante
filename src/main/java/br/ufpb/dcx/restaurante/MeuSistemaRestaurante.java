@@ -1,7 +1,7 @@
 package br.ufpb.dcx.restaurante;
 
-import br.ufpb.dcx.restaurante.exception.PedidoExistenteException;
-import br.ufpb.dcx.restaurante.exception.PedidoInexistenteException;
+import br.ufpb.dcx.restaurante.Exceptions.PedidoExistenteException;
+import br.ufpb.dcx.restaurante.Exceptions.PedidoInexistenteException;
 
 import java.io.IOException;
 import java.util.*;
@@ -108,5 +108,8 @@ public class MeuSistemaRestaurante implements SistemaRestaurante {
 
     public List<Produto> cardapio (){
         return this.cardapio;
+    }
+    public List<Pedido> pesquisaTodosPedidos(){
+        return new ArrayList<>(pedidoMap.values());
     }
 }

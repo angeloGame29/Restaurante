@@ -1,10 +1,8 @@
-package br.ufpb.dcx.restaurante.UI.panels.footPanels;
+package br.ufpb.dcx.restaurante.UI.Panels.footPanels;
 
-import br.ufpb.dcx.restaurante.MeuSistemaRestaurante;
 import br.ufpb.dcx.restaurante.Produto;
 import br.ufpb.dcx.restaurante.SistemaRestaurante;
-import br.ufpb.dcx.restaurante.UI.controller.PedidoController;
-import br.ufpb.dcx.restaurante.UI.panels.MenuSlide;
+import br.ufpb.dcx.restaurante.UI.Controller.CadastrarPedidoController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -28,7 +26,7 @@ public class CarrinhoPane extends JPanel {
 
         comprar = new JButton("Comprar");
 
-        comprar.addActionListener(new PedidoController(sistema, this));
+        comprar.addActionListener(new CadastrarPedidoController(sistema, this));
 
         add(labelTotal); // Exibe o total no topo do painel
         add(comprar);

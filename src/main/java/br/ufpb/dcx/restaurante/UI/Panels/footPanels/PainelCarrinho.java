@@ -1,4 +1,4 @@
-package br.ufpb.dcx.restaurante.UI.panels.footPanels;
+package br.ufpb.dcx.restaurante.UI.Panels.footPanels;
 
 import br.ufpb.dcx.restaurante.Produto;
 

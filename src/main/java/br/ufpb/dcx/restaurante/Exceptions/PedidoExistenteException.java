@@ -1,4 +1,4 @@
-package br.ufpb.dcx.restaurante.exception;
+package br.ufpb.dcx.restaurante.Exceptions;
 
 public class PedidoExistenteException extends Exception{
     public PedidoExistenteException(String msg){

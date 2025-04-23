@@ -1,10 +1,8 @@
-package br.ufpb.dcx.restaurante.UI.controller;
+package br.ufpb.dcx.restaurante.UI.Controller;
 
 import br.ufpb.dcx.restaurante.*;
-import br.ufpb.dcx.restaurante.UI.panels.footPanels.CarrinhoPane;
-import br.ufpb.dcx.restaurante.UI.panels.footPanels.CategoriaPane;
-import br.ufpb.dcx.restaurante.UI.panels.footPanels.PainelCarrinho;
-import br.ufpb.dcx.restaurante.exception.PedidoExistenteException;
+import br.ufpb.dcx.restaurante.UI.Panels.footPanels.CarrinhoPane;
+import br.ufpb.dcx.restaurante.Exceptions.PedidoExistenteException;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -13,12 +11,12 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PedidoController extends JDialog implements ActionListener {
+public class CadastrarPedidoController extends JDialog implements ActionListener {
     private static List<Produto> itensPedido = new ArrayList<>();
     private SistemaRestaurante sistema;
     private CarrinhoPane janela;
 
-    public PedidoController (SistemaRestaurante sistema, CarrinhoPane janela){
+    public CadastrarPedidoController(SistemaRestaurante sistema, CarrinhoPane janela){
         this.sistema = sistema;
         this.janela = janela;
     }
@@ -142,7 +140,7 @@ public class PedidoController extends JDialog implements ActionListener {
         JTextArea itens = new JTextArea();
         itens.setText("");
         System.out.println("Qtd de produtos: " + itensPedido.size());
-        for (Produto p : PedidoController.getItensPedido()) {
+        for (Produto p : CadastrarPedidoController.getItensPedido()) {
             itens.append("Produto: " + p.getNome() + "\n" +
                     "Preço: R$ " + p.getPreco() + "\n\n");
         }

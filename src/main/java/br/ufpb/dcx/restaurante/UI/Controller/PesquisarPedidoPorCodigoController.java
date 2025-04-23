@@ -1,20 +1,20 @@
-package br.ufpb.dcx.restaurante.UI.controller;
+package br.ufpb.dcx.restaurante.UI.Controller;
 
 import br.ufpb.dcx.restaurante.Pedido;
 import br.ufpb.dcx.restaurante.SistemaRestaurante;
-import br.ufpb.dcx.restaurante.UI.panels.MenuSlide;
-import br.ufpb.dcx.restaurante.exception.PedidoInexistenteException;
+import br.ufpb.dcx.restaurante.UI.Panels.MenuSlide;
+import br.ufpb.dcx.restaurante.Exceptions.PedidoInexistenteException;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class PesquisarPedidoController implements ActionListener {
+public class PesquisarPedidoPorCodigoController implements ActionListener {
 
     private SistemaRestaurante sistema;
     private MenuSlide janela;
 
-    public PesquisarPedidoController(SistemaRestaurante sistema, MenuSlide janela){
+    public PesquisarPedidoPorCodigoController(SistemaRestaurante sistema, MenuSlide janela){
         this.sistema = sistema;
         this.janela = janela;
     }

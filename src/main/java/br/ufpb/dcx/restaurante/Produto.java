@@ -1,9 +1,10 @@
 package br.ufpb.dcx.restaurante;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Produto {
+public class Produto implements Serializable {
     private String nome;
     private String imagem;
     private double preco;

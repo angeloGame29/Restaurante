@@ -1,4 +1,4 @@
-package br.ufpb.dcx.restaurante.UI.panels.footPanels;
+package br.ufpb.dcx.restaurante.UI.Panels.footPanels;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

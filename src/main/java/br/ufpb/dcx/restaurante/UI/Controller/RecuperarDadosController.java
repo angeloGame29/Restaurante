@@ -1,7 +1,7 @@
-package br.ufpb.dcx.restaurante.UI.controller;
+package br.ufpb.dcx.restaurante.UI.Controller;
 
 import br.ufpb.dcx.restaurante.SistemaRestaurante;
-import br.ufpb.dcx.restaurante.UI.panels.MenuSlide;
+import br.ufpb.dcx.restaurante.UI.Panels.MenuSlide;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -19,10 +19,9 @@ public class RecuperarDadosController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         try {
             sistema.recuperarPedido();
-            JOptionPane.showMessageDialog(null, "Tudo pronto!\nSeus dados foram recuperados sem problemas.");
+            JOptionPane.showMessageDialog(janela, "Tudo pronto!\nSeus dados foram recuperados sem problemas.");
         } catch (IOException s) {
-            JOptionPane.showMessageDialog(null, "Interrupção temporária.\nDados não recuperados");
-            s.printStackTrace();
+            JOptionPane.showMessageDialog(janela, "Interrupção temporária.\nDados não recuperados");
         }
     }
 }

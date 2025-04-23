@@ -1,7 +1,7 @@
 package br.ufpb.dcx.restaurante;
 
-import br.ufpb.dcx.restaurante.exception.PedidoExistenteException;
-import br.ufpb.dcx.restaurante.exception.PedidoInexistenteException;
+import br.ufpb.dcx.restaurante.Exceptions.PedidoExistenteException;
+import br.ufpb.dcx.restaurante.Exceptions.PedidoInexistenteException;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -190,7 +190,6 @@ public class ProgramaSistemaRestaurante {
                 case "9":
                     continuar = false;
                     break;
-
             }
         }
     }

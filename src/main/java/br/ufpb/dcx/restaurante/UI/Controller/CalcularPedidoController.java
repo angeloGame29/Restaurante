@@ -1,10 +1,8 @@
-package br.ufpb.dcx.restaurante.UI.controller;
+package br.ufpb.dcx.restaurante.UI.Controller;
 
-import br.ufpb.dcx.restaurante.MeuSistemaRestaurante;
 import br.ufpb.dcx.restaurante.SistemaRestaurante;
-import br.ufpb.dcx.restaurante.UI.GUI.TelaMenu;
-import br.ufpb.dcx.restaurante.UI.panels.MenuSlide;
-import br.ufpb.dcx.restaurante.exception.PedidoInexistenteException;
+import br.ufpb.dcx.restaurante.UI.Panels.MenuSlide;
+import br.ufpb.dcx.restaurante.Exceptions.PedidoInexistenteException;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
