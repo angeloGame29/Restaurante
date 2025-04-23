@@ -166,7 +166,6 @@ public class ProgramaSistemaRestaurante {
                     } catch (PedidoInexistenteException e){
                         JOptionPane.showMessageDialog(null,"Desculpe, pedido Inexistente!");
                     }
-
                     break;
                 case "7":
                     String CodigoPedidoACancelar = JOptionPane.showInputDialog("Qual o código do pedido que deseja cancelar? ");
