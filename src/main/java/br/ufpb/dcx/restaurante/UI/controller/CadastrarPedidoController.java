@@ -1,8 +1,8 @@
-package br.ufpb.dcx.restaurante.UI.Controller;
+package br.ufpb.dcx.restaurante.UI.controller;
 
 import br.ufpb.dcx.restaurante.*;
-import br.ufpb.dcx.restaurante.UI.Panels.footPanels.CarrinhoPane;
-import br.ufpb.dcx.restaurante.Exceptions.PedidoExistenteException;
+import br.ufpb.dcx.restaurante.UI.panels.footPanels.CarrinhoPane;
+import br.ufpb.dcx.restaurante.exceptions.PedidoExistenteException;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

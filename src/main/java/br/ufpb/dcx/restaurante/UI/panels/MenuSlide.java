@@ -1,7 +1,7 @@
-package br.ufpb.dcx.restaurante.UI.Panels;
+package br.ufpb.dcx.restaurante.UI.panels;
 
 import br.ufpb.dcx.restaurante.SistemaRestaurante;
-import br.ufpb.dcx.restaurante.UI.Controller.*;
+import br.ufpb.dcx.restaurante.UI.controller.*;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

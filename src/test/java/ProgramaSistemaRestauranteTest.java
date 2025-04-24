@@ -1,6 +1,6 @@
 import br.ufpb.dcx.restaurante.*;
-import br.ufpb.dcx.restaurante.Exceptions.PedidoExistenteException;
-import br.ufpb.dcx.restaurante.Exceptions.PedidoInexistenteException;
+import br.ufpb.dcx.restaurante.exceptions.PedidoExistenteException;
+import br.ufpb.dcx.restaurante.exceptions.PedidoInexistenteException;
 import org.junit.Test;
 
 import java.util.ArrayList;

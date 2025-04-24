@@ -1,6 +1,6 @@
 package br.ufpb.dcx.restaurante;
-import br.ufpb.dcx.restaurante.Exceptions.PedidoExistenteException;
-import br.ufpb.dcx.restaurante.Exceptions.PedidoInexistenteException;
+import br.ufpb.dcx.restaurante.exceptions.PedidoExistenteException;
+import br.ufpb.dcx.restaurante.exceptions.PedidoInexistenteException;
 
 import java.io.IOException;
 import java.util.List;

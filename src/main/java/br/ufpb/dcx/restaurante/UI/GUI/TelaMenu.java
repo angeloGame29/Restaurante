@@ -3,12 +3,11 @@ package br.ufpb.dcx.restaurante.UI.GUI;
 import br.ufpb.dcx.restaurante.MeuSistemaRestaurante;
 import br.ufpb.dcx.restaurante.Produto;
 import br.ufpb.dcx.restaurante.SistemaRestaurante;
-import br.ufpb.dcx.restaurante.UI.Controller.CadastrarPedidoController;
-import br.ufpb.dcx.restaurante.UI.Controller.RecuperarDadosController;
-import br.ufpb.dcx.restaurante.UI.Panels.BarraMenu;
-import br.ufpb.dcx.restaurante.UI.Panels.MenuSlide;
-import br.ufpb.dcx.restaurante.UI.Panels.Menufooter;
-import br.ufpb.dcx.restaurante.UI.Panels.footPanels.*;
+import br.ufpb.dcx.restaurante.UI.controller.CadastrarPedidoController;
+import br.ufpb.dcx.restaurante.UI.panels.BarraMenu;
+import br.ufpb.dcx.restaurante.UI.panels.MenuSlide;
+import br.ufpb.dcx.restaurante.UI.panels.Menufooter;
+import br.ufpb.dcx.restaurante.UI.panels.footPanels.*;
 
 import javax.swing.*;
 import java.awt.*;

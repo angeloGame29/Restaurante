@@ -1,8 +1,8 @@
-package br.ufpb.dcx.restaurante.UI.Panels.footPanels;
+package br.ufpb.dcx.restaurante.UI.panels.footPanels;
 
 import br.ufpb.dcx.restaurante.Produto;
 import br.ufpb.dcx.restaurante.SistemaRestaurante;
-import br.ufpb.dcx.restaurante.UI.Controller.CadastrarPedidoController;
+import br.ufpb.dcx.restaurante.UI.controller.CadastrarPedidoController;
 
 import javax.swing.*;
 import java.awt.*;

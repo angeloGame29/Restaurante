@@ -1,7 +1,7 @@
-package br.ufpb.dcx.restaurante.UI.Controller;
+package br.ufpb.dcx.restaurante.UI.controller;
 
 import br.ufpb.dcx.restaurante.SistemaRestaurante;
-import br.ufpb.dcx.restaurante.UI.Panels.MenuSlide;
+import br.ufpb.dcx.restaurante.UI.panels.MenuSlide;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

@@ -1,15 +1,15 @@
-package br.ufpb.dcx.restaurante.UI.Panels;
+package br.ufpb.dcx.restaurante.UI.panels;
 
 import br.ufpb.dcx.restaurante.UI.GUI.TelaMenu;
-import br.ufpb.dcx.restaurante.UI.Panels.footPanels.*;
+import br.ufpb.dcx.restaurante.UI.panels.footPanels.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static br.ufpb.dcx.restaurante.UI.Panels.ModImagem.colorirIcon;
-import static br.ufpb.dcx.restaurante.UI.Panels.ModImagem.deixaTamanhoIcon;
+import static br.ufpb.dcx.restaurante.UI.panels.ModImagem.colorirIcon;
+import static br.ufpb.dcx.restaurante.UI.panels.ModImagem.deixaTamanhoIcon;
 
 public class Menufooter extends JPanel {
     private HomePane homePane;
